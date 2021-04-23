@@ -10,6 +10,7 @@ export default function App(){
   return(
   <BrowserRouter>
     <div className = "App">
+      {/* 菜单栏 */}
       <div>
         <Menu mode="horizontal" theme="dark" >
           <Menu.Item icon = {<AppstoreOutlined/>}>
@@ -23,6 +24,7 @@ export default function App(){
           </Menu.Item>
         </Menu>
       </div>
+      {/* 实现页面跳转 */}
       <Switch>
         <Route path="/" exact component = {Home}/>
         <Route path="/employee" exact component = {Employee}/>
