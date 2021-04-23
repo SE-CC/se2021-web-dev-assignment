@@ -4,10 +4,11 @@ import {Menu} from "antd";
 import {AppstoreOutlined, UserOutlined, TeamOutlined} from '@ant-design/icons';
 
 import "antd/dist/antd.css";
+import "./App.css";
 
 export default function App(){
-  
-  return(
+
+  return(   
   <BrowserRouter>
     <div className = "App">
       {/* 菜单栏 */}
