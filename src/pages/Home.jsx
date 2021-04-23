@@ -1,7 +1,7 @@
 export default function Home(){
     return (
         <div className = "home page container">
-        index    
+        index page!
         </div>
     )
 }

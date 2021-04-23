@@ -1,7 +1,7 @@
 export default function Employee(){
     return (
         <div className = "employee page container">
-        employee   
+        employee page!
         </div>
     )
 }
