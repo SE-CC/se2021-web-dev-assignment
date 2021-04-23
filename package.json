@@ -34,5 +34,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ant-design": "^1.0.0",
+    "antd": "^4.15.2",
+    "react-router-dom": "^5.2.0"
   }
 }
