@@ -2,13 +2,17 @@ import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
 import {Home, Employee, List} from "./pages";
 import {Menu} from "antd";
 import {AppstoreOutlined, UserOutlined, TeamOutlined} from '@ant-design/icons';
+import {Provider} from "react-redux";
+import model from "./models";
 
 import "antd/dist/antd.css";
 import "./App.css";
+import React from "react";
 
 export default function App(){
 
   return(   
+  <Provider store={model}>
   <BrowserRouter>
     <div className = "App">
       {/* 菜单栏 */}
@@ -33,5 +37,6 @@ export default function App(){
       </Switch>
     </div>
   </BrowserRouter>
+  </Provider>
   );
 };

@@ -35,6 +35,12 @@ export default createStore((store = initialStore, action)=>{
     const {type, payload} = action;
 
     switch(type){
+        case "delete":
+            const index = payload;
+            data.splice(index,1);
+            return {
+                data: data.slice(0)
+            };
         
         default:
             return store;
