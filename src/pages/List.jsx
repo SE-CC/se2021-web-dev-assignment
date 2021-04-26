@@ -1,7 +1,6 @@
 import {useState} from "react";
 import { Table, Tag, Space } from 'antd';
 import "./List.css";
-
 export default function List(){
     const { Column, ColumnGroup } = Table;
     const [data, setData] = useState([
@@ -61,7 +60,15 @@ export default function List(){
                     render={(text, record) => (
                         <Space direction="vertical">
                             <a className = "edit">Edit {record.lastName}</a>
-                            <a className = "delete">Delete</a>
+                            <a className = "delete" onClick={(e)=>{
+                                let line = e.target.parentNode.parentNode.parentNode.parentNode;
+                                let index = 0;
+                                while((line=line.previousSibling)!=null)
+                                    index++;
+                                data.splice(index,1);
+                                let d= data.slice(0);
+                                setData(d);
+                            }}>Delete</a>
                         </Space>
                     )}
                 />
