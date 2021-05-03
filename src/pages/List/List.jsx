@@ -3,10 +3,12 @@ import { Table, Tag, Space } from "antd";
 import $ from "jquery";
 import "./List.css";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function List(props) {
   const { data, dispatch } = props;
   const { Column, ColumnGroup } = Table;
+  const history = useHistory();
 
   return (
     <div className="list page container">
@@ -36,17 +38,22 @@ function List(props) {
           key="action"
           render={(text, record) => (
             <Space direction="vertical">
-              <a className="edit">Edit {record.lastName}</a>
+              <a
+                className="edit"
+                onClick={() => history.push("/employee/" + record.key)}
+              >
+                Edit {record.lastName}
+              </a>
               <a
                 className="delete"
-                onClick={(e) => {
-                  const index = $(
-                    e.target.parentNode.parentNode.parentNode.parentNode
-                  ).index();
+                onClick={() => {
+                  // const index = $(
+                  //   e.target.parentNode.parentNode.parentNode.parentNode
+                  // ).index();
                   // alert(index);
                   dispatch({
                     type: "delete",
-                    payload: index,
+                    payload: record,
                   });
                 }}
               >
