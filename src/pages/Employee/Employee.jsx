@@ -51,7 +51,7 @@ function form(){
           },
         ]}
       >
-        <Input style={{ width: "50%" }} />
+        <Input />
       </Form.Item>
 
       <Form.Item

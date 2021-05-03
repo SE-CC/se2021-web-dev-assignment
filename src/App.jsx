@@ -13,13 +13,13 @@ import model from "./models";
 
 import "antd/dist/antd.css";
 import "./App.css";
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 const { Header, Sider, Content } = Layout;
 
 export default class App extends Component {
   state = {
-    collapsed: false,
+    collapsed: true,
   };
 
   toggle = () => {
@@ -28,13 +28,22 @@ export default class App extends Component {
     });
   };
 
-  render(props) {
-    console.log(props);
+  render() {
+    const props = this.props;
     return (
       <Provider store={model}>
         <BrowserRouter>
           <Layout>
-            <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+            <Sider
+              trigger={null}
+              collapsible
+              collapsed={this.state.collapsed}
+              style={{
+                overflow: "auto",
+                height: "100vh",
+                left: 0,
+              }}
+            >
               <div className="logo" />
               <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
                 <Menu.Item key="1" icon={<AppstoreOutlined />}>
@@ -49,7 +58,7 @@ export default class App extends Component {
               </Menu>
             </Sider>
             <Layout className="site-layout">
-              <Header className="site-layout-background" style={{ padding: 5 }}>
+              <Header className="site-layout-background" style={{ padding: 0 }}>
                 {React.createElement(
                   this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
                   {
@@ -63,18 +72,17 @@ export default class App extends Component {
                 style={{
                   margin: "24px 16px",
                   padding: 24,
-                  minHeight: 280,
+                  minHeight: 400,
                 }}
               >
-                {props.children}
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/employee" exact component={Employee} />
+                  <Route path="/list" exact component={List} />
+                </Switch>
               </Content>
             </Layout>
           </Layout>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/employee" exact component={Employee} />
-            <Route path="/list" exact component={List} />
-          </Switch>
         </BrowserRouter>
       </Provider>
     );
