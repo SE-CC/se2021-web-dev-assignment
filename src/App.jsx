@@ -44,7 +44,7 @@ export default class App extends Component {
                 left: 0,
               }}
             >
-              <div className="logo" />
+              {/* <div className="logo" /> */}
               <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
                 <Menu.Item key="1" icon={<AppstoreOutlined />}>
                   <Link to="/">index</Link>
