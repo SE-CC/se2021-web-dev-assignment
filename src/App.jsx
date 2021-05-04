@@ -21,9 +21,9 @@ export default function App() {
   // state = {
   //   collapsed: true,
   // };
-  const [collapsed, setCollapsed] = useState(true)
+  const [mycollapsed, setCollapsed] = useState(true)
   const toggle = () => {
-    setCollapsed(!collapsed);
+    setCollapsed(!mycollapsed);
   };
   
   //const props = this.props;
@@ -34,7 +34,7 @@ export default function App() {
           <Sider
             trigger={null}
             collapsible
-            collapsed={collapsed}
+            collapsed={mycollapsed}
             style={{
               overflow: "auto",
               height: "100vh",
@@ -57,7 +57,7 @@ export default function App() {
           <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0 }}>
               {React.createElement(
-                collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+                mycollapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
                 {
                   className: "trigger",
                   onClick: toggle,
