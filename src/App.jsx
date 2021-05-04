@@ -13,82 +13,79 @@ import model from "./models";
 
 import "antd/dist/antd.css";
 import "./App.css";
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 const { Header, Sider, Content } = Layout;
 
-export default class App extends Component {
-  state = {
-    collapsed: true,
+export default function App() {
+  // state = {
+  //   collapsed: true,
+  // };
+  const [collapsed, setCollapsed] = useState(true)
+  const toggle = () => {
+    setCollapsed(!collapsed);
   };
-
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
-
-  render() {
-    const props = this.props;
-    return (
-      <Provider store={model}>
-        <BrowserRouter>
-          <Layout>
-            <Sider
-              trigger={null}
-              collapsible
-              collapsed={this.state.collapsed}
+  
+  //const props = this.props;
+  return (
+    <Provider store={model}>
+      <BrowserRouter>
+        <Layout>
+          <Sider
+            trigger={null}
+            collapsible
+            collapsed={collapsed}
+            style={{
+              overflow: "auto",
+              height: "100vh",
+              left: 0,
+            }}
+          >
+            {/* <div className="logo" /> */}
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+              <Menu.Item key="1" icon={<AppstoreOutlined />}>
+                <Link to="/">index</Link>
+              </Menu.Item>
+              <Menu.Item key="2" icon={<UserOutlined />}>
+                <Link to="/employee">employee</Link>
+              </Menu.Item>
+              <Menu.Item key="3" icon={<TeamOutlined />}>
+                <Link to="/list">list</Link>
+              </Menu.Item>
+            </Menu>
+          </Sider>
+          <Layout className="site-layout">
+            <Header className="site-layout-background" style={{ padding: 0 }}>
+              {React.createElement(
+                collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+                {
+                  className: "trigger",
+                  onClick: toggle,
+                }
+              )}
+            </Header>
+            <Content
+              className="site-layout-background"
               style={{
-                overflow: "auto",
-                height: "100vh",
-                left: 0,
+                margin: "24px 16px",
+                padding: 24,
+                minHeight: 400,
               }}
             >
-              {/* <div className="logo" /> */}
-              <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-                <Menu.Item key="1" icon={<AppstoreOutlined />}>
-                  <Link to="/">index</Link>
-                </Menu.Item>
-                <Menu.Item key="2" icon={<UserOutlined />}>
-                  <Link to="/employee">employee</Link>
-                </Menu.Item>
-                <Menu.Item key="3" icon={<TeamOutlined />}>
-                  <Link to="/list">list</Link>
-                </Menu.Item>
-              </Menu>
-            </Sider>
-            <Layout className="site-layout">
-              <Header className="site-layout-background" style={{ padding: 0 }}>
-                {React.createElement(
-                  this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-                  {
-                    className: "trigger",
-                    onClick: this.toggle,
-                  }
-                )}
-              </Header>
-              <Content
-                className="site-layout-background"
-                style={{
-                  margin: "24px 16px",
-                  padding: 24,
-                  minHeight: 400,
-                }}
-              >
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/employee" exact component={Employee} />
-                  <Route path="/employee/:key" exact component={Employee} />
-                  <Route path="/list" exact component={List} />
-                </Switch>
-              </Content>
-            </Layout>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/employee" exact component={Employee} />
+                <Route path="/employee/:key" exact component={Employee} />
+                <Route path="/list" exact component={List} />
+              </Switch>
+            </Content>
           </Layout>
-        </BrowserRouter>
-      </Provider>
-    );
-  }
+        </Layout>
+      </BrowserRouter>
+    </Provider>
+  );
 }
+
 
 // export default function App() {
 
