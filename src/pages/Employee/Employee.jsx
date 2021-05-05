@@ -49,6 +49,7 @@ function MyForm(props) {
   const [editedAddress, setEditedAddress] = useState(
     isAdded ? "" : employee.address
   );
+  isAdded ? console.log(data) : console.log(employee);
   console.log(isAdded);
 
   return (
@@ -168,7 +169,7 @@ function MyForm(props) {
 
 function Employee(props) {
   const { data } = props;
-  console.log(data);
+  //console.log(data);
   return MyForm(props);
 }
 
