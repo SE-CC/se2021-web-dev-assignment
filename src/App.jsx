@@ -10,6 +10,8 @@ import {
 } from "@ant-design/icons";
 import { Provider } from "react-redux";
 import model from "./models";
+import "./mock/getdata.js"
+import axios from "axios"
 
 import "antd/dist/antd.css";
 import "./App.css";
@@ -21,6 +23,11 @@ export default function App() {
   // state = {
   //   collapsed: true,
   // };
+  axios.get("/api/data")
+  .then(res=>{
+    console.log(res);
+  })
+
   const [mycollapsed, setCollapsed] = useState(true)
   const toggle = () => {
     setCollapsed(!mycollapsed);
