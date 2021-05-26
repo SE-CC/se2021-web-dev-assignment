@@ -10,23 +10,34 @@ import {
 } from "@ant-design/icons";
 import { Provider } from "react-redux";
 import model from "./models";
-import "./mock/getdata.js"
-import axios from "axios"
+import axios from "axios";
 
 import "antd/dist/antd.css";
 import "./App.css";
 import React, { useState } from "react";
-
 const { Header, Sider, Content } = Layout;
-
 export default function App() {
   // state = {
   //   collapsed: true,
   // };
-  axios.get("/api/data")
-  .then(res=>{
-    console.log(res);
-  })
+  // axios.get("/api/data")
+  // .then(res=>{
+  //   console.log(res);
+  // })
+
+  // axios.post("/api/data",[
+  //   {
+      // "key": "1",
+      // "firstName":  "NewJohn",
+      // "lastName":  "Brown",
+      // "age":  32,
+      // "address":  "New York No. 1 Lake Park",
+      // "tags":  ["nice", "developer"]
+  //   }])
+  // .then(res=>{
+  //   console.log(res);
+  // })
+  
 
   const [mycollapsed, setCollapsed] = useState(true)
   const toggle = () => {
